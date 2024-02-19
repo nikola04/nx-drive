@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCloud | Upgrade Plan</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/assets/css/upgrade.css">
+</head>
+<body>
+    <div id="heading">
+        <h2>Choose one plan that suits you best</h2>
+        <h3>Starting at 1,99$ /month</h3>
+    </div>
+    <div id="container">
+        <div class="inner">
+            <div class="plan-box <% if(logged){ %>disabled <% } %>">
+            <div class="plan-box"></div>
+                <div class="inner">
+                    <p class="name">Free</p>
+                    <h3 class="space">15GB</h3>
+                    <button <% if(logged){ %>disabled <% }else{ %> onclick="window.open('/register','_self')" <% } %>><p><% if(logged){ %>
+                        <% if(plan == 0){ %> Already in Use <% }else{ %> Free plan <% } %>
+                    <% }else{ %> Start for Free <% } %></p></button>
+                    <div style="margin-top: 67px;" class="including">
+                        <span class="hor-line"></span>
+                        <p class="title">Free plan Includes:</p>
+                        <span class="checked"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>150GB of space</p></span>
+                        <span class="checked"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>∞ Bandwidth</p></span>
+                    </div>
+                </div>
+            </div>
+            <div class="plan-box purple">
+                <div class="inner">
+                    <span class="suggest">Suggested</span>
+                    <p class="name">Basic</p>
+                    <h3 class="space">150GB</h3>
+                    <button <% if(plan != 1){ %>onclick="buyPlan(1)"<% }else{ %>disabled<% } %>><p><% if(logged && plan == 1){ %>Already in Use<% }else{ %>1,99$ per month<% } %></p></button>
+                    <p class="per-year <% if(logged && plan == 1){ %> disabled" <% }else{ %> " onclick="buyPlan(1, { year: true })"<% } %>">19.90$ per year</p>
+                    <span class="save-perc">save 16%</span>
+                    <div class="including">
+                        <span class="hor-line"></span>
+                        <p class="title">Basic plan Includes:</p>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>150GB of space</p></span>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>∞ Bandwidth</p></span>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>3 Family Members</p></span>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>24/7 Support</p></span>
+                    </div>
+                </div>
+            </div>
+            <div class="plan-box red">
+                <div class="inner">
+                    <p class="name">Standard</p>
+                    <h3 class="space">250GB</h3>
+                    <button <% if(plan != 2){ %>onclick="buyPlan(2)"<% }else{ %>disabled<% } %>><p><% if(logged && plan == 2){ %>Already in Use<% }else{ %>2,99$ per month<% } %></p></button>
+                    <p class="per-year <% if(logged && plan == 2){ %> disabled" <% }else{ %> " onclick="buyPlan(2, { year: true })"<% } %>">29.90$ per year</p>
+                    <span class="save-perc">save 16%</span>
+                    <div class="including">
+                        <span class="hor-line"></span>
+                        <p class="title">Standard plan Includes:</p>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>250GB of space</p></span>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>∞ Bandwidth</p></span>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>5 Family Members</p></span>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>24/7 Support</p></span>
+                    </div>
+                </div>
+            </div>
+            <div class="plan-box blue">
+                <div class="inner">
+                    <span class="suggest">Best Buy</span>
+                    <p class="name">Premium</p>
+                    <h3 class="space">500GB</h3>
+                    <button <% if(plan != 3){ %>onclick="buyPlan(3)"<% }else{ %>disabled<% } %>><p><% if(logged && plan == 3){ %>Already in Use<% }else{ %>4,99$ per month<% } %></p></button>
+                    <p class="per-year <% if(logged && plan == 3){ %> disabled" <% }else{ %> " onclick="buyPlan(3, { year: true })"<% } %>">49.90$ per year</p>
+                    <span class="save-perc">save 16%</span>
+                    <div class="including">
+                        <span class="hor-line"></span>
+                        <p class="title">Premium plan Includes:</p>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>500GB of space</p></span>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>∞ Bandwidth</p></span>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>7 Family Members</p></span>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>24/7 Support</p></span>
+                        <span class="checked"><svg  aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><p>Premium Benefits</p></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/upgrade.js"></script>
+</body>
+</html>

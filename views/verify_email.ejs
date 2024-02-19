@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCloud | Login</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div id="form-box">
+        <div class="heading">
+            <h2>Verify Email</h2>
+        </div>
+        <form id="form">
+            <p>Verification code has been sent to your email.</p>
+            <div class="form-group" style="overflow: visible;">
+                <button type="submit">Resend Code (ne radi lol)</button>
+            </div>
+            <p>Send code again? <a href="javascript:void(0)" onclick="reSendCode()">Send(kao ni ovo)</a></p>
+            <div class="form-group" style="margin-top: 12px; max-height: 82px; overflow: visible;">
+                <img id="fetch_loader" src="/assets/images/loader.svg">
+                <div id="error" class="active" style="margin-top: 16px;"></div>
+            </div>
+        </form>
+    </div>
+    <script src="/assets/js/register.js">
+    </script>
+</body>
+</html>

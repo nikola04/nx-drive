@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #f8f8f8;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div#form-box{
+    padding: 32px 12px;
+    margin: 0 6px;
+    width: 350px;
+    height: auto;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 21px rgba(0, 0, 0, .08);
+}
+div#form-box > div.heading{
+    margin: 12px auto 12px;
+    position: relative;
+}
+div#form-box > div.heading > h2{
+    text-align: center;
+    font-family: 'Open sans';
+    font-size: 22px;
+    opacity: .82;
+}
+div#form-box > form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 74%;
+    margin: 0 auto;
+    position: relative;
+    top: 21px;
+}
+div#form-box > form > p{
+    font-family: 'Open Sans';
+    font-size: 14px;
+    align-self: flex-start;
+    color: rgba(0, 0, 0, .6);
+}
+div#form-box > form > p > a{
+    text-decoration: none;
+    color: #8077b4;
+}
+div#form-box > form > p > a:hover{
+    color: #8f84d6;
+}
+div#form-box > form input[type="email"]:focus ~ i.eye,
+div#form-box > form input[type="text"]:focus ~ i.eye,
+div#form-box > form input[type="password"]:focus ~ i.eye{
+    opacity: 1;
+}
+div#form-box > form i.eye{
+    width: 24px;
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    left: auto;
+    text-align: right;
+    transition: .12s ease-in-out opacity;
+    pointer-events: none;
+    cursor: pointer;
+}
+div#form-box > form input[type="email"],
+div#form-box > form input[type="text"],
+div#form-box > form input[type="password"]{
+    border: none;
+    background: initial;
+    padding: 9px 14px 9px 26px;
+    font-size: 15px;
+    width: 100%;
+    outline: 0;
+    border-radius: 0;
+    font-family: 'Open Sans';
+    border-bottom: 1px solid #c7c7c7;
+}
+div#form-box > form span.line{
+    display: block;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-101%);
+    background: linear-gradient(120deg, #9b8fdf, #8f84da);
+    transition: .21s ease transform;
+}
+div#form-box > form input:focus + span.line,
+div#form-box > form input:valid + span.line{
+    transform: translateX(0);
+}
+div#form-box > form input:focus ~ i,
+div#form-box > form input:valid ~ i{
+    color: #8f84da;
+}
+div#form-box > form > div{
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 21px;
+    overflow: hidden;
+    width: 100%;
+}
+div#form-box > form > div.additional input{
+    margin-left: 4px;
+}
+div#form-box > form > div.additional{
+    margin: 3px 0 29px;
+}
+div#form-box > form > div.additional > label{
+    padding-left: 7px;
+    font-family: 'Open Sans';
+    font-size: 13px;
+    opacity: .55;
+}
+div#form-box > form > div > i{
+    position: absolute;
+    left: 2px;
+    font-size: 19px;
+    transition: .16s ease-in-out color;
+}
+div#form-box > form button{
+    position: relative;
+    padding: 10px 0;
+    width: 100%;
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    background: linear-gradient(120deg, #9c90d3, #8f84da);
+    box-shadow: 0 0 7px rgba(173, 163, 224, 0.3);
+    color: #fff;
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: 14px;
+    transition: .16s ease-in-out box-shadow,
+                .16s ease-in-out background;
+}
+div#form-box > form button:hover{
+    box-shadow: 0 0 5px rgba(173, 163, 224, 0.3);
+    background: linear-gradient(120deg, #988ccf, #796ec2);
+}
+div#form-box > form button:focus{
+    box-shadow: 0 0 2px rgba(173, 163, 224, 0.3);
+    background: linear-gradient(120deg, #897fb8, #665e97);
+}
+div#error{
+    position: absolute;
+    font-size: 15px;
+    opacity: 0;
+    transition: .12s ease-in opacity;
+    font-family: 'Open Sans';
+}
+div#error.active{
+    opacity: 1;
+}
+img#fetch_loader{
+    width: 48px;
+    opacity: 0;
+    transition: .12s ease-in opacity;
+}
+img#fetch_loader.active{
+    opacity: 1;
+}

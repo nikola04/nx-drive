@@ -1,0 +1,219 @@
+<div id="loader">
+    <a onclick="window.open('/my-files')" style="color: var(--txt-color-basic)" class="logo-holder" title="Dashboard Page">NxAccount</a>
+    <div class="content">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cloud" class="svg-inline--fa fa-cloud fa-w-20" role="img" viewBox="0 0 640 512"><path fill="var(--loader-cloud)" d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4z"/></svg>
+    </div>
+</div>
+<nav id="top">
+    <div>
+        <div class="nav-group">
+            <a onclick="window.location.href = '/account/'"class="logo-holder" title="Dashboard Page"> NxAccount</a>
+        </div>
+        <div class="nav-group" style="margin-left: auto;">
+            <a><span class="bx bx-bell"></span></a>
+            <a id="menuBtn"><span class='bx bxs-compass'></span></a>
+            <a id="settingsBtn"><span class="bx bxs-chevron-down"></span></a>
+        </div>
+    </div>
+    <div id="menuBox">
+        <div onclick="window.open('/', '_blank')">
+            <span class="bx bxs-cloud"></span>
+            <p>NxDrive</p>
+        </div>
+        <div>
+            <span class="bx bx-mail-send"></span>
+            <p>NxMail</p>
+        </div>
+    </div>
+    <div id="settingsBox">
+        <div class="main active child">
+            <div class="menu-group">
+                <div class="item-button profile" onclick="location.href='/account'">
+                    <img src="/assets/images/default-profile.png" alt="">
+                    <div class="right-text">
+                        <p><%= user.f_name %>&nbsp;<%= user.l_name %></p>
+                        <p><%= user.email %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-group">
+                <div class="item-button slide" onclick="switchMenu({switch_acc: true })">
+                    <span class="icon"><i class='bx bx-user' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[16] %></p>
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                </div>
+                <div class="item-button slide" onclick="switchMenu({settings: true})">
+                    <span class="icon"><i class='bx bxs-cog'></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[17] %></p>
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                </div>
+                <div class="item-button slide" onclick="switchMenu({help: true})">
+                    <span class="icon"><i class='bx bxs-help-circle'></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[18] %></p>
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                </div>
+                <div class="item-button slide" onclick="switchMenu({theme: true})">
+                    <span class="icon"><i class='bx bxs-moon' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[19] %></p>
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                </div>
+                <div class="item-button" onclick="logout()">
+                    <span class="icon"><i class='bx bx-log-out' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[20] %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sacc child">
+            <div class="header">
+                <span onclick="switchMenu({main: true})"><i class='bx bx-arrow-back'></i></span>
+                <h3><%= scripts[21] %></h3>
+            </div>
+            <div class="menu-group">
+                <div class="item-button">
+                    <span class="icon">
+                        <img src="/assets/images/default-profile.png" alt="">
+                    </span>
+                    <div class="right-text">
+                        <p><%= user.f_name %>&nbsp;<%= user.l_name %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="settnpriv child">
+            <div class="header">
+                <span onclick="switchMenu({main: true})"><i class='bx bx-arrow-back'></i></span>
+                <h3><%= scripts[22] %></h3>
+            </div>
+            <div class="menu-group">
+                <div class="item-button">
+                    <span class="icon"><i class='bx bxs-shield-alt-2' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[23] %></p>
+                    </div>
+                </div>
+                <div class="item-button">
+                    <span class="icon"><i class='bx bxs-cog'></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[24] %></p>
+                    </div>
+                </div>
+                <div class="item-button">
+                    <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[25] %></p>
+                    </div>
+                </div>
+                <div class="item-button">
+                    <span class="icon"><i class='bx bx-list-ul' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[26] %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="helpnsupp child">
+            <div class="header">
+                <span onclick="switchMenu({main: true})"><i class='bx bx-arrow-back'></i></span>
+                <h3><%= scripts[27] %></h3>
+            </div>
+            <div class="menu-group">
+                <div class="item-button">
+                    <span class="icon"><i class='bx bx-mail-send' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[28] %></p>
+                    </div>
+                </div>
+                <div class="item-button">
+                    <span class="icon"><i class='bx bxs-bug-alt' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[29] %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="language child">
+            <div class="header">
+                <span onclick="switchMenu({ theme: true, back: true })"><i class='bx bx-arrow-back'></i></span>
+                <h3><%= scripts[30] %></h3>
+            </div>
+            <div class="menu-group">
+                <div class="item-button slide <% if(user.language == 'english'){ %> disabled <% } %>" data-language="english" onclick="changeLanguage('english')">
+                    <span class="icon"><i class='bx bx-globe' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[31] %></p>
+                        <% if(user.language == 'english'){ %> <i class='bx bx-check'></i> <% } %>
+                    </div>
+                </div>
+                <div class="item-button slide <% if(user.language == 'russian'){ %> disabled <% } %>" data-language="russian" onclick="changeLanguage('russian')">
+                    <span class="icon"><i class='bx bx-globe' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[32] %></p>
+                        <% if(user.language == 'russian'){ %> <i class='bx bx-check'></i> <% } %>
+                    </div>
+                </div>
+                <div class="item-button slide <% if(user.language == 'serbian'){ %> disabled <% } %>" data-language="serbian" onclick="changeLanguage('serbian')">
+                    <span class="icon"><i class='bx bx-globe' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[33] %></p>
+                        <% if(user.language == 'serbian'){ %> <i class='bx bx-check'></i> <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="theme child">
+            <div class="header">
+                <span onclick="switchMenu({main: true})"><i class='bx bx-arrow-back'></i></span>
+                <h3><%= scripts[34] %></h3>
+            </div>
+            <div class="menu-group">
+                <div class="item-radio">
+                    <span class="icon"><i class='bx bxs-moon' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[35] %></p>
+                        <p class="desc"><%= scripts[36] %></p>
+                        <div class="radio-group" style="margin-top: 10px;">
+                            <label for="darkThemeOff"><%= scripts[37] %></label>
+                            <input type="radio" name="dark_theme" id="darkThemeOff" value="1"<% if(user.theme == 1) { %> checked <% } %> >
+                        </div>
+                        <div class="radio-group">
+                            <label for="darkThemeOn"><%= scripts[38] %></label>
+                            <input type="radio" name="dark_theme" id="darkThemeOn" value="2" <% if(user.theme == 2) { %> checked <% } %>>
+                        </div>
+                        <div class="radio-group">
+                            <label for="darkThemeAuto"><%= scripts[39] %></label>
+                            <input type="radio" name="dark_theme" id="darkThemeAuto" value="3" <% if(user.theme == 3) { %> checked <% } %> >
+                        </div>
+                    </div>
+                </div>
+                <div class="item-button slide" onclick="switchMenu({langs: true})">
+                    <span class="icon"><i class='bx bx-globe' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[40] %></p>
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<nav id="side" class="active">
+    <div>
+        <div class="menu">
+            <div class="nav-group" style="padding-left: 0;">
+                <span onclick="load('/')" class="menu-item active" data-id='home'><a><span class="icon bx bxs-user"></span><p><%= scripts[60] %></p></a></span>
+                <span onclick="load('/data')" class="menu-item" data-id='data'><a><span class="icon bx bxs-user-detail"></span><p><%= scripts[61] %></p></a></span>
+                <span onclick="load('/security')" class="menu-item" data-id='security'><a><span class="icon bx bxs-lock-alt"></span><p><%= scripts[62] %></p></a></span>
+            </div>
+        </div>
+    </div>
+</nav>

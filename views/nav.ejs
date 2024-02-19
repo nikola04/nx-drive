@@ -1,0 +1,479 @@
+<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+<link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+<div id="loader">
+    <a onclick="window.open('/my-files')" style="color: var(--txt-color-basic)" class="logo-holder" title="Dashboard Page">NxDrive <span id="ver">Free</span></a>
+    <div class="content">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="cloud" class="svg-inline--fa fa-cloud fa-w-20" role="img" viewBox="0 0 640 512"><path fill="var(--loader-cloud)" d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4z"/></svg>
+    </div>
+</div>
+<div id="showFileBG">
+</div>
+<div id="showFile">
+    <div id="sfNav">
+        <div class="left">
+            <span class="nav-icon bx bx-left-arrow-alt" onclick="closeSImg()"></span>
+            <span class="file-name"></span>
+            <span class="file-name-edit bx bxs-pencil" onclick="rename()"></span>
+        </div>
+        <div class="right">
+            <i class='bx bxs-download' onclick="downloadPreviewed()"></i>
+            <i class='bx bx-share-alt' onclick="shareSelected()"></i>
+            <i class='bx bx-printer' onclick="printPreview()"></i>
+        </div>
+    </div>
+    <div id="preview-container">
+        <i id="prwGoLeft" onclick="swapPreview(false)" class='bx bxs-chevron-left'></i>
+        <i id="prwGoRight" onclick="swapPreview(true)" class='bx bxs-chevron-right'></i>
+        <img src="/assets/images/loader.svg" style="width: 67px;" alt="" id="preview-loader">
+    </div>
+    <div class="interact">
+        <div class="controlls" id="previewControlls">
+            <span class="button rtl" onclick="previewRotL(this)"><i class='bx bx-rotate-left'></i></span>
+            <span class="button zmi" onclick="previewZoomI(this)"><i class='bx bx-zoom-in' ></i></span>
+            <span class="button zmo disabled" onclick="previewZoomO(this, event)"><i class='bx bx-zoom-out' ></i></span>
+            <span class="button rtr" onclick="previewRotR(this)"><i class='bx bx-rotate-right' ></i></span>
+        </div>
+    </div>
+</div>
+<div id="promptBG">
+</div>
+<div id="promptBox" style="opacity: 0;">
+    <div class="top">
+        <p class="title" id="promptTitle"></p>
+        <i class='close bx bx-x' onclick="closePrompt()"></i>
+    </div>
+    <input type="text" placeholder="Enter new name.." id="prompt" pattern=".{1,}" required></input>
+    <div class="controlls">
+        <button class="close" onclick="closePrompt()"><%= scripts[10] %></button>
+        <button class="rename" id="renamePromptBtn"></button>
+    </div>
+</div>
+<div id="confirmBox" style="opacity: 0;">
+    <div class="top">
+        <p class="title" id="confirmTitle"></p>
+        <i class='close bx bx-x' onclick="closeConfirm()"></i>
+    </div>
+    <div class="files"></div>
+    <div class="controlls">
+        <button class="close" onclick="closeConfirm()"><%= scripts[10] %></button>
+        <button class="confirm" id="confirmBtn"></button>
+    </div>
+</div>
+<div id="shareBox" style="opacity: 0;">
+    <div class="top">
+        <p class="title"><i class='bx bxs-user-plus'></i> <%= scripts[11] %></p>
+        <i class='close bx bx-x' onclick="closeShare()"></i>
+    </div>
+    <div class="input" onclick="focusInputShareBox()">
+        <div class="added" id="addedShare">
+            <div class="input-holder">
+                <p class="empty-text" id="empty-text-for-share"><%= scripts[12] %></p>
+                <input type="text" onkeydown="addEmailForShare(event, this)" id="user-share-input" role="combobox" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off" aria-autocomplete="both" aria-haspopup="listbox">
+            </div>
+        </div>
+    </div>
+    <div id="have-access">
+    </div>
+    <div class="controlls">
+        <div id="selected-file"></div>
+        <button class="share" onclick="saveShares();"><%= scripts[13] %></button>
+    </div>
+</div>
+<div id="keyboardBg"></div>
+<div id="keyboardBox">
+    <div class="title">
+        <i class='bx bxs-keyboard'></i>
+        <h3><%= scripts[42] %></h3>
+        <div class="circle-button" onclick="keyboardBtn(false)"><i class='bx bx-x' ></i></div>
+    </div>
+    <div class="commands">
+        <div class="select">
+            <p><%= scripts[57] %></p>
+            <div class="command">
+                <p class="name"><%= scripts[43] %></p>
+                <div>
+                    <span>CTRL</span>
+                    +
+                    <span>LMB</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[44] %></p>
+                <div>
+                    <span>SHIFT</span>
+                    +
+                    <span>LMB</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[45] %></p>
+                <div>
+                    <span>ENTER</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[46] %></p>
+                <div>
+                    <span>ARROW DOWN</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[47] %></p>
+                <div>
+                    <span>ARROW UP</span>
+                </div>
+            </div>
+        </div>
+        <div class="interact">
+            <p><%= scripts[58] %></p>
+            <div class="command">
+                <p class="name"><%= scripts[53] %></p>
+                <div>
+                    <span>CTRL</span>
+                    +
+                    <span>c</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[48] %></p>
+                <div>
+                    <span>DELETE</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[54] %></p>
+                <div>
+                    <span>CTRL</span>
+                    +
+                    <span>z</span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p><%= scripts[59] %></p>
+            <div class="command">
+                <p class="name"><%= scripts[51] %></p>
+                <div>
+                    <span>BACKSPACE</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[52] %></p>
+                <div>
+                    <span>SHIFT</span>
+                    +
+                    <span>r</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[50] %></p>
+                <div>
+                    <span>n</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[49] %></p>
+                <div>
+                    <span>i</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[55] %></p>
+                <div>
+                    <span>SHIFT</span>
+                    +
+                    <span>?</span>
+                </div>
+            </div>
+            <div class="command">
+                <p class="name"><%= scripts[56] %></p>
+                <div>
+                    <span>ESCAPE</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav id="top">
+    <div>
+        <div class="nav-group">
+            <a onclick="load('/my-files')"class="logo-holder" title="Dashboard Page">NxDrive <span id="ver">Free</span></a>
+        </div>
+        <div class="nav-group search-bar" id="search-div">
+            <input type="search" name="" id="search-bar" placeholder="<%= scripts[15] %>" spellcheck="false">
+            <i class='bx bx-search icon-search'></i>
+            <i class='bx bx-filter icon-filter-search' id="filter-btn" onclick="showFilters()"></i>
+            <div id="search-result">
+            </div>
+        </div>
+        <div class="nav-group" style="margin-left: auto;">
+            <a id="keyboardBtn"><span class='bx bxs-keyboard'></span></a>
+            <a><span class="bx bx-bell"></span></a>
+            <a id="menuBtn"><span class='bx bxs-compass'></span></a>
+            <a id="settingsBtn"><span class="bx bxs-chevron-down"></span></a>
+        </div>
+    </div>
+    <div id="menuBox">
+        <div onclick="window.open('/', '_self')">
+            <span class="bx bxs-cloud"></span>
+            <p>NxDrive</p>
+        </div>
+        <div>
+            <span class="bx bx-mail-send"></span>
+            <p>NxMail</p>
+        </div>
+    </div>
+    <div id="settingsBox">
+        <div class="main active child">
+            <div class="menu-group">
+                <div class="item-button profile" onclick="window.open('/account', '_blank')">
+                    <img src="/assets/images/default-profile.png" alt="">
+                    <div class="right-text">
+                        <p><%= user.f_name %>&nbsp;<%= user.l_name %></p>
+                        <p><%= user.email %></p>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-group">
+                <div class="item-button slide" onclick="switchMenu({switch_acc: true })">
+                    <span class="icon"><i class='bx bx-user' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[16] %></p>
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                </div>
+                <div class="item-button slide" onclick="switchMenu({settings: true})">
+                    <span class="icon"><i class='bx bxs-cog'></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[17] %></p>
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                </div>
+                <div class="item-button slide" onclick="switchMenu({help: true})">
+                    <span class="icon"><i class='bx bxs-help-circle'></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[18] %></p>
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                </div>
+                <div class="item-button slide" onclick="switchMenu({theme: true})">
+                    <span class="icon"><i class='bx bxs-moon' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[19] %></p>
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                </div>
+                <div class="item-button" onclick="logout()">
+                    <span class="icon"><i class='bx bx-log-out' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[20] %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sacc child">
+            <div class="header">
+                <span onclick="switchMenu({main: true})"><i class='bx bx-arrow-back'></i></span>
+                <h3><%= scripts[21] %></h3>
+            </div>
+            <div class="menu-group">
+                <div class="item-button">
+                    <span class="icon">
+                        <img src="/assets/images/default-profile.png" alt="">
+                    </span>
+                    <div class="right-text">
+                        <p><%= user.f_name %>&nbsp;<%= user.l_name %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="settnpriv child">
+            <div class="header">
+                <span onclick="switchMenu({main: true})"><i class='bx bx-arrow-back'></i></span>
+                <h3><%= scripts[22] %></h3>
+            </div>
+            <div class="menu-group">
+                <div class="item-button">
+                    <span class="icon"><i class='bx bxs-shield-alt-2' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[23] %></p>
+                    </div>
+                </div>
+                <div class="item-button">
+                    <span class="icon"><i class='bx bxs-cog'></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[24] %></p>
+                    </div>
+                </div>
+                <div class="item-button">
+                    <span class="icon"><i class='bx bxs-lock-alt'></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[25] %></p>
+                    </div>
+                </div>
+                <div class="item-button">
+                    <span class="icon"><i class='bx bx-list-ul' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[26] %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="helpnsupp child">
+            <div class="header">
+                <span onclick="switchMenu({main: true})"><i class='bx bx-arrow-back'></i></span>
+                <h3><%= scripts[27] %></h3>
+            </div>
+            <div class="menu-group">
+                <div class="item-button">
+                    <span class="icon"><i class='bx bx-mail-send' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[28] %></p>
+                    </div>
+                </div>
+                <div class="item-button">
+                    <span class="icon"><i class='bx bxs-bug-alt' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[29] %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="language child">
+            <div class="header">
+                <span onclick="switchMenu({ theme: true, back: true })"><i class='bx bx-arrow-back'></i></span>
+                <h3><%= scripts[30] %></h3>
+            </div>
+            <div class="menu-group">
+                <div class="item-button slide <% if(user.language == 'english'){ %> disabled <% } %>" data-language="english" onclick="changeLanguage('english')">
+                    <span class="icon"><i class='bx bx-globe' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[31] %></p>
+                        <% if(user.language == 'english'){ %> <i class='bx bx-check'></i> <% } %>
+                    </div>
+                </div>
+                <div class="item-button slide <% if(user.language == 'russian'){ %> disabled <% } %>" data-language="russian" onclick="changeLanguage('russian')">
+                    <span class="icon"><i class='bx bx-globe' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[32] %></p>
+                        <% if(user.language == 'russian'){ %> <i class='bx bx-check'></i> <% } %>
+                    </div>
+                </div>
+                <div class="item-button slide <% if(user.language == 'serbian'){ %> disabled <% } %>" data-language="serbian" onclick="changeLanguage('serbian')">
+                    <span class="icon"><i class='bx bx-globe' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[33] %></p>
+                        <% if(user.language == 'serbian'){ %> <i class='bx bx-check'></i> <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="theme child">
+            <div class="header">
+                <span onclick="switchMenu({main: true})"><i class='bx bx-arrow-back'></i></span>
+                <h3><%= scripts[34] %></h3>
+            </div>
+            <div class="menu-group">
+                <div class="item-radio">
+                    <span class="icon"><i class='bx bxs-moon' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[35] %></p>
+                        <p class="desc"><%= scripts[36] %></p>
+                        <div class="radio-group" style="margin-top: 10px;">
+                            <label for="darkThemeOff"><%= scripts[37] %></label>
+                            <input type="radio" name="dark_theme" id="darkThemeOff" value="1"<% if(user.theme == 1) { %> checked <% } %> >
+                        </div>
+                        <div class="radio-group">
+                            <label for="darkThemeOn"><%= scripts[38] %></label>
+                            <input type="radio" name="dark_theme" id="darkThemeOn" value="2" <% if(user.theme == 2) { %> checked <% } %>>
+                        </div>
+                        <div class="radio-group">
+                            <label for="darkThemeAuto"><%= scripts[39] %></label>
+                            <input type="radio" name="dark_theme" id="darkThemeAuto" value="3" <% if(user.theme == 3) { %> checked <% } %> >
+                        </div>
+                    </div>
+                </div>
+                <div class="item-button slide" onclick="switchMenu({langs: true})">
+                    <span class="icon"><i class='bx bx-globe' ></i></span>
+                    <div class="right-text">
+                        <p><%= scripts[40] %></p>
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<nav id="smSide">
+    <div>
+        <div class="menu">
+            <div class="nav-group">
+                <span onclick="window.open('/photos', '_blank')"><a><span class="icon bx bx-image"></span></a></span>
+                <span class="nav-unique" onclick="window.open('/upgrade', '_blank')"><a><span class="bx bx-atom"></span></a></span>
+            </div>
+            <div class="nav-group">
+                <span onclick="load('/my-files')" class="menu-item <% if(active == 'my-files'){ %> active <% } %>" data-id='files'><a><span class="icon bx bx-folder"></span></a></span>
+                <span onclick="load('/shared')" class="menu-item <% if(active == 'shared'){ %> active <% } %>" data-id='shared'><a><span class="icon bx bxs-share-alt"></span></a></span>
+                <span onclick="load('/favorites')" class="menu-item <% if(active == 'favorites'){ %> active <% } %>" data-id='fav'><a><span class="icon bx bx-star"></span></a></span>
+                <span onclick="load('/trash')" class="menu-item <% if(active == 'trash'){ %> active <% } %>" data-id='trash'><a><span class="icon bx bx-trash"></span></a></span>
+            </div>
+            <div class="nav-group">
+                <span onclick="window.open('/affiliate', '_blank')"><a><span class="bx bx-diamond"></span></a></span>
+                <!--<span onclick="window.open('/buy-storage', '_blank')"><a><span class="bx bx-plus-circle"></span></a></span>-->
+            </div>
+        </div>
+    </div>
+    <div class="user">
+        <div class="user-logout" onclick="logout()">
+            <i class='bx bx-log-out'></i>
+        </div>
+    </div>
+</nav>
+<nav id="side" class="active">
+    <div>
+        <div class="menu">
+            <div class="nav-group" style="border-bottom: 0; padding-bottom: 0;">
+                <span id="addBtn"><a><span class="icon bx bx-plus"></span><p><%= scripts[0] %></p></a></span>
+                <div id="addNewContainer">
+                    <div>
+                        <div onclick="createDir(true)"><p><i class="bx bx-folder-plus"></i><span><%= scripts[1] %></span></p></div>
+                        <!--<div onclick="//createFile(true)"><p><i class="bx bxs-file-plus"></i><span>Create a File</span></p></div>-->
+                    </div>
+                    <div>
+                        <div onclick="dirUpload(true)" style="pointer-events: none;"><p><i class="bx bx-upload"></i><span><%= scripts[2] %></span></p></div>
+                        <div onclick="fileUpload(true)"><p><i class="bx bxs-cloud-upload"></i><span><%= scripts[3] %></span></p></div>
+                    </div>
+                </div>
+                <input id="file-input" name="file" type="file" multiple hidden>
+                <input id="dir-input" name="directory" type="file" webkitdirectory directory multiple hidden>
+            </div>
+            <div class="nav-group">
+                <span onclick="load('/my-files')" class="menu-item <% if(active == 'my-files'){ %> active <% } %>" data-id='files'><a><span class="icon bx bx-folder"></span><p><%= scripts[6] %></p></a></span>
+                <span onclick="load('/shared')" class="menu-item <% if(active == 'shared'){ %> active <% } %>" data-id='shared'><a><span class="icon bx bxs-share-alt"></span><p><%= scripts[7] %></p></a></span>
+                <span onclick="load('/favorites')" class="menu-item <% if(active == 'favorites'){ %> active <% } %>" data-id='fav'><a><span class="icon bx bx-star"></span><p><%= scripts[8] %></p></a></span>
+                <span onclick="load('/trash')" class="menu-item <% if(active == 'trash'){ %> active <% } %>" data-id='trash'><a><span class="icon bx bx-trash"></span><p><%= scripts[9] %></p></a></span>
+            </div>
+            <div class="nav-group">
+                <span class="nav-unique" onclick="window.open('/upgrade', '_blank')"><a><span class="bx bx-atom"></span><p><%= scripts[5] %></p></a></span>
+                <span onclick="window.open('/affiliate', '_blank')"><a><span class="bx bx-diamond"></span><p><%= scripts[14] %></p></a></span>
+                <!--<span onclick="window.open('/buy-storage', '_blank')"><a><span class="bx bx-plus-circle"></span><p>Buy Space</p></a></span>-->
+            </div>
+        </div>
+    </div>
+    <div class="user">
+        <div class="user-info">
+            <span><p id="using-space">0KB</p><p id="out-of">0KB</p></span>
+            <span id="line">
+                <span id="used-space"></span>
+                <span class="empty-space"></span>
+            </span>
+        </div>
+    </div>
+</nav>
+<div id="notif-message">
+    <p></p>
+    <div>
+        <a class="revoke-btn"><%= scripts[41] %></a>
+        <span class='bx bx-x' onclick="closeNotifMessage()"></span>
+    </div>
+</div>

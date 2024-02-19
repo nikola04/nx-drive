@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+@import url('/assets/css/colors.css');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #fafafa;
+}
+div#heading{
+    text-align: center;
+    margin-top: 84px;
+}
+div#heading > h2{
+    margin: 0;
+    font-size: 25px;
+    line-height: 39px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, .67);
+}
+div#heading > h3{
+    margin: 8px 0 0;
+    font-weight: 600;
+    line-height: 35px;
+    font-size: 22px;
+    color: rgba(0, 0, 0, .72);
+}
+div#container{
+    width: 100%;
+    height: 100%;
+    padding: 0 12px;
+    margin-top: 95px;
+}
+div#container > div.inner{
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+div#container > div.inner > div.plan-box{
+    position: relative;
+    width: 248px;
+    height: 463px;
+    margin: 24px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.08);
+    cursor: context-menu;
+    transition: transform .16s ease-in-out,
+                box-shadow .16s ease-in-out;
+}
+div#container > div.inner > div.plan-box:hover{
+    box-shadow: 2px 4px 14px 5px rgba(0, 0, 0, 0.08);
+    transform: translate(-1px, -2px);
+}
+div#container > div.inner > div.plan-box.purple{
+    box-shadow: 0px 0px 14px 5px #CA7DF91F;
+    color: #CA7DF91F !important;
+    background: linear-gradient(165deg, #7967E4 0%, #CA7DF9 63.02%, #D935C8 100%);
+}
+div#container > div.inner > div.plan-box.blue{
+    box-shadow: 0px 0px 14px 5px #6099dc1f;
+    color: #6099dc1f !important;
+    background: linear-gradient(165deg, #3CB7D2 0%, #6099DC 63.02%, #475ACA 100%);
+}
+div#container > div.inner > div.plan-box.red{
+    box-shadow: 0px 0px 14px 5px #eb5f811f;
+    color: #eb5f811f !important;
+    background: linear-gradient(164.8deg, #D367E4 0%, #F97DB9 63.02%, #D93535 100%);
+}
+div#container > div.inner > div.plan-box > div.inner{
+    top: 4px;
+    left: 4px;
+    height: 455px;
+    width: 240px;
+    border-radius: 3px;
+    position: relative;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+div#container div.plan-box span.suggest{
+    position: absolute;
+    top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #0000005E;
+}
+div#container div.plan-box p.name{
+    margin-top: 30px;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 35px;
+    color: rgba(0, 0, 0, .55);
+}
+div#container div.plan-box.purple p.name{
+    background: linear-gradient(164.8deg, #7967E4 0%, #CA7DF9 63.02%, #D935C8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+div#container div.plan-box.blue p.name{
+    background: linear-gradient(164.8deg, #3CB7D2 0%, #6099DC 63.02%, #475ACA 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+div#container div.plan-box.red p.name{
+    background: linear-gradient(164.8deg, #D367E4 0%, #F97DB9 63.02%, #D93535 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+div#container div.plan-box h3.space{
+    margin-top: 5px;
+    line-height: 32px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: #000000B8;
+}
+div#container div.plan-box button{
+    cursor: pointer;
+    margin-top: 25px;
+    border-radius: 2px;
+    background: #454545;
+    border:none;
+    width: 150px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .14s ease-in-out background-color,
+                .12s ease box-shadow;
+}
+div#container div.plan-box.purple button{
+    border: none;
+    box-shadow: 0px 0px 11px rgba(121, 102, 228, 0.08);
+    background: #7967E4;
+}
+div#container div.plan-box.purple button:hover{
+    background: #715fda;
+}
+div#container div.plan-box.purple button:focus{
+    box-shadow: 0px 0px 5px rgba(121, 102, 228, 0.08);
+    background: #6755cf;
+}
+div#container div.plan-box.red button{
+    border: none;
+    box-shadow: 0px 0px 11px #eb5f811f;
+    background: #eb5f81;
+}
+div#container div.plan-box.red button:hover{
+    background: #dd5879;
+}
+div#container div.plan-box.red button:focus{
+    box-shadow: 0px 0px 5px #eb5f811f;
+    background: #ca4b6b;
+}
+div#container div.plan-box.blue button{
+    border: none;
+    box-shadow: 0px 0px 11px rgba(121, 102, 228, 0.08);
+    background: #52A5D8;
+}
+div#container div.plan-box.blue button:hover{
+    background: #4898ca;
+}
+div#container div.plan-box.blue button:focus{
+    box-shadow: 0px 0px 5px rgba(121, 102, 228, 0.08);
+    background: #3e8bbb;
+}
+div#container div.plan-box.disabled button{
+    cursor: context-menu;
+    background: #ccc;
+    border: none;
+}
+div#container div.plan-box button:disabled{
+    cursor: context-menu;
+}
+div#container div.plan-box.disabled button > p{
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+}
+div#container div.plan-box.purple button > p,
+div#container div.plan-box.red button > p,
+div#container div.plan-box.blue button > p{
+    color: #fff;
+}
+div#container div.plan-box button > p{
+    font-weight: 500;
+    color:#fff;
+    font-size: 14px;
+    transition: .21s ease-in-out color,
+}
+div#container div.plan-box p.per-year{
+    font-size: 14px;
+    font-weight: 600;
+    color: #7967e4;
+    margin-top: 7px;
+    padding: 1px 3px;
+    cursor: pointer;
+    transition: .08s ease background-color;
+}
+div#container div.plan-box p.per-year.disabled:hover{
+    cursor: context-menu;
+}
+div#container div.plan-box.purple p.per-year:hover,
+div#container div.plan-box.purple p.per-year.disabled:active{
+    background: #d6cfff;
+}
+div#container div.plan-box.purple p.per-year:active{
+    background: #c5b9ff;
+}
+div#container div.plan-box.blue p.per-year{
+    color: #52A5D8;
+}
+div#container div.plan-box.blue p.per-year:hover,
+div#container div.plan-box.blue p.per-year.disabled:active{
+    background: #d2eeff;
+}
+div#container div.plan-box.blue p.per-year:active{
+    background: #bee6ff;
+}
+div#container div.plan-box.red p.per-year{
+    color: #eb5f81;
+}
+div#container div.plan-box.red p.per-year:hover,
+div#container div.plan-box.red p.per-year.disabled:active{
+    background: #ffd7e1;
+}
+div#container div.plan-box.red p.per-year:active{
+    background: #ffc2d1;
+}
+div#container div.plan-box span.save-perc{
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .37);
+}
+div#container div.plan-box div.including{
+    width: 85%;
+    height: auto;
+    margin-top: 14px;
+}
+div#container div.plan-box span.hor-line{
+    width: 100%;
+    height: 1px;
+    background: #000;
+    opacity: .18;
+    display: block;
+}
+div#container div.plan-box div.including > p.title{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, .53);
+    margin: 11px 0 9px;
+}
+div#container div.plan-box div.including > span.checked{
+    margin-left: 2px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+div#container div.plan-box div.including > span.checked > svg > path{
+    fill: #595959;
+}
+div#container div.plan-box div.including > span.checked > svg{
+    width: 16px;
+    height: 16px;
+}
+div#container div.plan-box.purple div.including > span.checked > svg > path{
+    fill: #7966E4 !important;
+}
+div#container div.plan-box.blue div.including > span.checked > svg > path{
+    fill: #4F91D4 !important;
+}
+div#container div.plan-box.red div.including > span.checked > svg > path{
+    fill: #eb5f81 !important;
+}
+div#container div.plan-box div.including > span.checked > p{
+    margin-left: 5px;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, .5);
+}

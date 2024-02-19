@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto;  display: block;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+<defs>
+ <mask id="ldio-wirjfztk8me-mask">
+   <circle cx="50" cy="50" r="20" stroke="#fff" stroke-linecap="round" stroke-dasharray="94.24777960769379 31.41592653589793" stroke-width="9">
+     <animateTransform attributeName="transform" type="rotate" values="0 50 50;360 50 50" times="0;1" dur="0.9s" repeatCount="indefinite"></animateTransform>
+   </circle>
+ </mask>
+</defs>
+<g mask="url(#ldio-wirjfztk8me-mask)"><rect x="20.5" y="0" width="12.6" height="100" fill="#c352ec">
+  <animate attributeName="fill" values="#c352ec;#965bf3;#826bef;#965bf3;#c352ec" times="0;0.25;0.5;0.75;1" dur="1s" repeatCount="indefinite" begin="-0.8s"></animate>
+</rect><rect x="32.1" y="0" width="12.6" height="100" fill="#965bf3">
+  <animate attributeName="fill" values="#c352ec;#965bf3;#826bef;#965bf3;#c352ec" times="0;0.25;0.5;0.75;1" dur="1s" repeatCount="indefinite" begin="-0.6s"></animate>
+</rect><rect x="43.7" y="0" width="12.6" height="100" fill="#826bef">
+  <animate attributeName="fill" values="#c352ec;#965bf3;#826bef;#965bf3;#c352ec" times="0;0.25;0.5;0.75;1" dur="1s" repeatCount="indefinite" begin="-0.4s"></animate>
+</rect><rect x="55.3" y="0" width="12.6" height="100" fill="#965bf3">
+  <animate attributeName="fill" values="#c352ec;#965bf3;#826bef;#965bf3;#c352ec" times="0;0.25;0.5;0.75;1" dur="1s" repeatCount="indefinite" begin="-0.2s"></animate>
+</rect><rect x="66.9" y="0" width="12.6" height="100" fill="#c352ec">
+  <animate attributeName="fill" values="#c352ec;#965bf3;#826bef;#965bf3;#c352ec" times="0;0.25;0.5;0.75;1" dur="1s" repeatCount="indefinite" begin="0s"></animate>
+</rect></g>
+</svg>

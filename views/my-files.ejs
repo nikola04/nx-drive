@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NWS | NxDrive - <%= scripts[0] %></title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/file-manager.css">
+    <link rel="stylesheet" id="pageStyle">
+    <script src="/assets/js/nav.js" onload="setTheme(<%= user.theme %>)"></script>
+</head>
+<body>
+    <%- include('nav', { active: 'my-files', scripts: nav_scripts, user: user }) %>
+    <container id="content">
+        <div id="loading">
+            <div id="loaded"></div>
+        </div>
+        <div id="content-inner" class="conent-inner">
+            <div id="popup" style="display: none;"></div>
+            <div onclick="closePopup()" style="display: none;" id="popup-bg"></div>
+            <div id="manager">
+                <div id="explorer">
+                    <div id="selRect"></div>
+                    <div class="scrollable-container">
+                        <div id="navigation">
+                            <div id="path_value"></div>
+                        </div>
+                        <div id="recommended-cont" style="display: none;">
+                            <div id="recommended">
+                                <div class="suggested-file">
+                                </div>
+                                <div class="suggested-file">
+                                </div>
+                                <div class="suggested-file">
+                                </div>
+                                <div class="suggested-file">
+                                </div>
+                                <div class="suggested-file">
+                                </div>
+                                <div class="suggested-file">
+                                </div>
+                                <div class="suggested-file">
+                                </div>
+                                <div class="suggested-file">
+                                </div>
+                                <div class="suggested-file">
+                                </div>
+                            </div>
+                            <div id="scroll-pos"><div id="scroll-pos-inner"></div></div>
+                        </div>
+                        <div id="controller">
+                            <!--<div>
+                                <div>
+                                    <span onclick="getBack()" style="font-size: 19px;" title="Go One Step Back" class="bx bx-arrow-back"></span>
+                                    <span onclick="refresh()" style="font-size: 19px;" id="refreshBtn" title="Refresh File Explorer" class="bx bx-refresh"></span>
+                                </div>
+                            </div>
+                            <div>
+                                  <div class="file-upload" style="display: none;" hidden>
+                                    <span class="bx bxs-download disabled" id="downloadicon" onclick="downloadSelected()"></span>
+                                    <span style="font-size: 19px;" id="file-upload" title="Upload File" onclick="fileUpload()" class='bx bxs-cloud-upload'></span>
+                                </div>
+                                <div class="file-create">
+                                    <span onclick="createFile()" class="bx bxs-file-plus" title="Create File"></span>
+                                    <span onclick="createDir()" title="Create Folder" class="bx bxs-folder-plus"></span>
+                                    <span id="trashicon" title="Move File(s) into Trash" onclick="deleteSelected()" class="bx bxs-trash disabled"></span>
+                                </div>
+                            </div>-->
+                            <div class="name">
+                                <div class="clickable" onclick="chSortBy(this)">
+                                    <p><%= scripts[1] %></p>
+                                    <i class='sort-by active-sort bx bx-down-arrow-alt'></i>
+                                </div>
+                            </div>
+                            <div class="size"><p><%= scripts[2] %></p></div>
+                            <div class="date"><p><%= scripts[3] %></p></div>
+                        </div>
+                        <div class="table" id="file-table">
+                        </div>
+                    </div>
+                    <div id="clickable-area"></div>
+                    <div id="context-menu">
+                        <div class="file">
+                            <div onclick="openAll()" class="prwTb"><p><span><%= scripts[4] %></span></p></div>
+                            <div onclick="showPreview()" class="prwNw"><p><i class='bx bx-show'></i><span><%= scripts[5] %></span></p></div>
+                            <div onclick="openWith(this)"><p><i class="bx bx-link-external"></i><span><%= scripts[6] %></span><i class="bx bx-chevron-right cm-icon"></i></p>
+                                <div class="option-box">
+                                    <div><p><i class="bx bx-image-alt"></i><span>Nex Photos</span></p></div>
+                                    <div><p><i class="bx bxs-file-archive"></i><span>Nex Zip</span></p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="folder">
+                            <div onclick="goInSelected(true)"><p><i class="bx bx-folder-open"></i><span><%= scripts[7] %></span></p></div>
+                        </div>
+                        <div>
+                            <div onclick="shareSelected(true)"><p><i class="bx bx-link"></i><span><%= scripts[8] %></span></p></div>
+                            <div class="nfavorite" onclick="addToFav()"><p><i class="bx bx-star"></i><span><%= scripts[9] %></span></p></div>
+                            <div class="favorite" onclick="remFromFav()"><p><i class="bx bxs-star"></i><span><%= scripts[10] %></span></p></div>
+                            <div><p><i class="bx bx-move"></i><span>Move To</span><i class="bx bx-chevron-right"></i></p></div>
+                            <div class="file folder" onclick="rename()"><p><i class="bx bx-pencil"></i><span><%= scripts[11] %></span></p></div>
+                        </div>
+                        <div>
+                            <div onclick="showInfo(true)" class="file folder"><p><i class="bx bx-info-circle"></i><span><%= scripts[12] %></span></p></div>
+                            <div onclick="copySelected(true)"><p><i class="bx bx-copy"></i><span><%= scripts[13] %></span></p></div>
+                            <div onclick="downloadSelected(true)"><p><i class="bx bx-download"></i><span><%= scripts[14] %></span></p></div>
+                        </div>
+                        <div style="border-bottom: none;">
+                            <div onclick="deleteSelected(true)"><p><i class="bx bx-trash-alt"></i><span><%= scripts[15] %></span></p></div>
+                        </div>
+                        <div class="none">
+                            <div onclick="createDir(true)"><p><i class="bx bx-folder-plus"></i><span><%= scripts[16] %></span></p></div>
+                            <div onclick="createFile(true)"><p><i class="bx bxs-file-plus"></i><span><%= scripts[17] %></span></p></div>
+                        </div>
+                        <div class="none">
+                            <!--<div onclick="deleteSelected(true)"><p><i class="bx bx-upload"></i><span>Upload Folder</span></p></div>-->
+                            <div onclick="fileUpload(true)"><p><i class="bx bxs-cloud-upload"></i><span><%= scripts[18] %></span></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="file-info">
+                    <div>
+                        <p><%= scripts[19] %></p>
+                        <i onclick="closeMoreInfo()" class="bx bx-x"></i>
+                    </div>
+                    <div id="file-info-cont"></div>
+                </div>
+            </div>
+            <div id="dndup">
+                <i class='bx bx-upload'></i>
+                <p><%= scripts[20] %></p>
+            </div>
+            <div id="undoBlock"></div>
+        </div>
+    </container>
+    <script src="/assets/js/loadpage.js"></script>
+    <script src="/assets/js/getfiles.js" onload="onLoad()" id="pageScript"></script>
+    <script>window.loadedScripts = ['getfiles']</script>
+</body>
+</html>

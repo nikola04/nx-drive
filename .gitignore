@@ -1,0 +1,4 @@
+uploads/
+node_modules/
+package-lock.json
+public/assets/inc/fontawesome-5.15.3

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCloud | Login</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div id="form-box">
+        <div class="heading">
+            <h2>Welcome Back</h2>
+        </div>
+        <form id="form">
+            <div class="form-group">
+                <input type="email" id="email" name="f_email" placeholder="Email" autocomplete="email" value="<% if(email){ %><%= email %><% } %> " required>
+                <span class="line"></span>
+                <i class='bx bx-mail-send'></i>
+            </div>
+            <div class="form-group">
+                <input type="password" id="pass" name="f_pass" placeholder="Password" autocomplete="password" required>
+                <span class="line"></span>
+                <i class='bx bx-show-alt eye'></i>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+            <p style="font-size: 13px;margin-bottom: 8px;">Forgot Password? <a href="/forgot_pass">Reset</a></p>
+            <div class="form-group" style="overflow: visible; margin-top: 21px;">
+                <button type="submit">Login</button>
+            </div>
+            <p>Don't have an Account? <a href="/register">Sign up</a>.</p>
+            <div class="form-group" style="margin-top: 12px;max-height: 35px;">
+                <img id="fetch_loader" src="/assets/images/loader.svg"></img>
+                <div id="error"></div>
+            </div>
+        </form>
+    </div>
+    <script src="/assets/js/login.js">
+    </script>
+</body>
+</html>

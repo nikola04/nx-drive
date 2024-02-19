@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCloud | Login</title>
+    <link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div id="form-box">
+        <div class="heading">
+            <h2>Create Account</h2>
+        </div>
+        <form id="form">
+            <div class="form-group">
+                <input type="text" id="name" autocomplete="given-name" name="f_name" placeholder="Name" required>
+                <span class="line"></span>
+                <i class='bx bx-user'></i>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" name="f_email" placeholder="Email" autocomplete="email" required>
+                <span class="line"></span>
+                <i class='bx bx-mail-send'></i>
+            </div>
+            <div class="form-group">
+                <input type="password" id="pass" name="f_pass" autocomplete="current-password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$" placeholder="Password" required>
+                <span class="line"></span>
+                <i class='bx bx-show-alt eye'></i>
+                <i class='bx bx-lock-alt'></i>
+            </div>
+            <div class="form-group additional">
+                <input id="tos" type="checkbox">
+                <label for="tos">I accept <a href="/tos">Terms Of Service</a>.</label>
+            </div>
+            <div class="form-group" style="overflow: visible;">
+                <button type="submit">Register</button>
+            </div>
+            <p>Already have an Account? <a href="/login">Login</a>.</p>
+            <div class="form-group" style="margin-top: 12px; max-height: 82px; overflow: visible;">
+                <img id="fetch_loader" src="/assets/images/loader.svg">
+                <div id="error" class="active" style="margin-top: 16px;"></div>
+            </div>
+        </form>
+    </div>
+    <script src="/assets/js/register.js">
+    </script>
+</body>
+</html>

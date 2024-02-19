@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCloud | My Files</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/file-manager.css">
+    <link rel="stylesheet" id="pageStyle">
+    <script src="/assets/js/nav.js" onload="setTheme(<%= user.theme %>)"></script>
+</head>
+<body>
+    <%- include('nav', { active: 'favorites', scripts: nav_scripts, user: user }) %>
+    <container id="content">
+        <div id="loading">
+            <div id="loaded"></div>
+        </div>
+        <div id="content-inner" class="conent-inner">
+            <div id="popup" style="display: none;"></div>
+            <div onclick="closePopup()" style="display: none;" id="popup-bg"></div>
+            <div id="manager">
+                <div id="explorer">
+                    <div id="selRect"></div>
+                    <div class="scrollable-container">
+                        <div id="navigation">
+                            <span onclick="getBack()" id="pathBack" style="font-size: 19px;" title="Go One Step Back" class="bx bx-arrow-back"></span>
+                            <div id="path_value"></div>
+                        </div>
+                        <div id="controller" style="top:0">
+                            <div class="name">
+                                <div class="clickable" onclick="chSortBy(this)">
+                                    <p>Name</p>
+                                    <i class='sort-by bx bx-down-arrow-alt'></i>
+                                </div>
+                            </div>
+                            <div class="size"><p>Size</p></div>
+                            <div class="date"><p>Modified</p></div>
+                        </div>
+                        <div class="table" id="file-table">
+                        </div>
+                    </div>
+                    <div id="clickable-area"></div>
+                    <div id="context-menu">
+                        <div class="file">
+                            <div onclick="openAll()"><p><i class=""></i><span>Preview in new Tab</span></p></div>
+                            <div onclick="openWith()"><p><i class="bx bx-link-external"></i><span>Open With</span><i class="bx bx-chevron-right"></i></p></div>
+                        </div>
+                        <div class="folder">
+                            <div onclick="goInSelected(true)"><p><i class="bx bx-folder-open"></i><span>Open Folder</span></p></div>
+                        </div>
+                        <div>
+                            <div><p><i class="bx bx-link"></i><span>Share Link</span></p></div>
+                            <div class="nfavorite" onclick="addToFav()"><p><i class="bx bx-star"></i><span>Add to Favorites</span></p></div>
+                            <div class="favorite" onclick="remFromFav()"><p><i class="bx bxs-star"></i><span>Remove from Favorites</span></p></div>
+                            <div><p><i class="bx bx-move"></i><span>Move To</span><i class="bx bx-chevron-right"></i></p></div>
+                            <div class="file folder"><p><i class="bx bx-pencil"></i><span>Rename</span></p></div>
+                        </div>
+                        <div>
+                            <div onclick="showInfo(true)" class="file folder"><p><i class="bx bx-info-circle"></i><span>View Informations</span></p></div>
+                            <div onclick="copySelected(true)"><p><i class="bx bx-copy"></i><span>Make a copy</span></p></div>
+                            <div onclick="downloadSelected(true)"><p><i class="bx bx-download"></i><span>Download</span></p></div>
+                        </div>
+                        <div style="border-bottom: none;">
+                            <div onclick="deleteSelected(true)"><p><i class="bx bx-trash-alt"></i><span>Remove</span></p></div>
+                        </div>
+                        <div class="none">
+                            <div onclick="createDir(true)"><p><i class="bx bx-folder-plus"></i><span>Make a Folder</span></p></div>
+                            <div onclick="createFile(true)"><p><i class="bx bxs-file-plus"></i><span>Create a File</span></p></div>
+                        </div>
+                        <div class="none">
+                            <!--<div onclick="deleteSelected(true)"><p><i class="bx bx-upload"></i><span>Upload Folder</span></p></div>-->
+                            <div onclick="fileUpload(true)"><p><i class="bx bxs-cloud-upload"></i><span>Upload File</span></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="file-info">
+                    <div>
+                        <p>File Information</p>
+                        <i onclick="closeMoreInfo()" class="bx bx-x"></i>
+                    </div>
+                    <div id="file-info-cont"></div>
+                </div>
+            </div>
+        </div>
+    </container>
+    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/loadpage.js"></script>
+    <script src="/assets/js/getfiles.js" onload="onLoadF()" id="pageScript"></script>
+    <script>window.loadedScripts = ['getfiles']</script>
+</body>
+</html>

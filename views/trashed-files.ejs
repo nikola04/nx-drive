@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCloud | My Files</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/assets/css/nav.css">
+    <link rel="stylesheet" href="/assets/css/file-manager.css">
+    <link rel="stylesheet" id="pageStyle">
+    <script src="/assets/js/nav.js" onload="setTheme(<%= user.theme %>)"></script>
+</head>
+<body>
+    <%- include('nav', { active: 'trash', scripts: nav_scripts, user: user }) %>
+    <container id="content">
+        <div id="loading">
+            <div id="loaded"></div>
+        </div>
+        <div id="content-inner" class="conent-inner">
+            <div id="manager">
+                <!--<div id="controller">
+                    <div>
+                        <div>
+                            <span onclick="refresh('trash')" id="refreshBtn" title="Refresh File Explorer" class="bx bx-refresh"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <span class="bx bx-history" onclick="recoverSelected()" title="Recover from Trash"></span>
+                            <span id="trashicon" onclick="" title="Delete Permanently" class="bx bxs-trash disabled"></span>
+                        </div>
+                    </div>
+                </div>-->
+                <div id="explorer">
+                    <div id="selRect"></div>
+                    <div class="scrollable-container">
+                        <div id="controller" style="top: 0">
+                            <div class="name">
+                                <div class="clickable" onclick="chSortBy(this)">
+                                    <p>Name</p>
+                                    <i class='sort-by bx bx-down-arrow-alt'></i>
+                                </div>
+                            </div>
+                            <div class="size"><p>Size</p></div>
+                            <div class="date"><p>Modified</p></div>
+                        </div>
+                        <div class="table" id="file-table">
+                        </div>
+                    </div>
+                    <div id="clickable-area"></div>
+                    <div id="context-menu">
+                        <div>
+                            <div onclick="recoverSelected(true)"><p><i class="bx bx-history"></i><span>Recover</span></p></div>
+                        </div>
+                        <div>
+                            <div><p><i class="bx bxs-trash"></i><span>Delete Permanently</span></p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </container>
+    <script src="/assets/js/nav.js"></script>
+    <script src="/assets/js/loadpage.js"></script>
+    <script src="/assets/js/getfiles.js" onload="onLoadT()" id="pageScript"></script>
+    <script>window.loadedScripts = ['getfiles']</script>
+</body>
+</html>
